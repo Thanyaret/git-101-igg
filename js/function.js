@@ -1,15 +1,22 @@
-//  function add(a,b) {
-//     return a+b
+// function add(a, b) { 
+//     this.user = 'sai'
+//     return a + b
 // }
-// function mul(a,b){
-//     return a*b
+
+// console.log()
+
+// function mul(a, b) {
+//     return a * b
 // }
-// function searhCustomer(customerName){
-//     //find some customer
 
-    const add = (a,b) => {
-        return a + b 
-    }
+// ftunction searchCustomer(customerName){
+//     // find some customer
+//     reurn {
+//         name: "customar"
+//     }  
+// }
+const add = (a,b) => a + b
 
+//this.user = ???
 
-console.log(add(2,3))
+console.log(add(2, 3))
