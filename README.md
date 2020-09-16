@@ -4,4 +4,4 @@
 
 ## Thanyaret N
 
-## Wanvisa N
+## Wanvisa Nanta
