@@ -1,6 +1,6 @@
 import React ,{ useState, useEffect} from 'react'
 import axios from 'axios'
-import { StyleSheet, View ,Text} from 'react-native'
+import { StyleSheet, View ,Text ,Image} from 'react-native'
 
 export default(props) =>{
     
@@ -22,6 +22,9 @@ export default(props) =>{
 
     return (
         <View style={styles.container}>
+            <Image
+            style={styles.avatar} 
+            source={{uri:'https://movie-api.igeargeek.com' + resume.avatar}}/>
             <View style={styles.textLine}>
             <Text>Full name :{resume.name}</Text>
             </View>
@@ -41,5 +44,6 @@ export default(props) =>{
 
 const styles = StyleSheet.create({
     container: {padding:30,backgroundColor:'white',minHeight:'100%'},
-    textLine: {marginBottom:20}
+    textLine: {marginBottom:20},
+    avatar:{width:'100%', height:360,marginBottom:20}
 })

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native'
+import { ScrollView, View, Text, TextInput, StyleSheet, Button, Alert,Platform } from 'react-native'
 import ValidationComponent from 'react-native-form-validator'
 import axios from 'axios'
 import Camera from '../component/Camera'
@@ -9,11 +9,13 @@ export default class ResumeForm extends ValidationComponent {
     name: '',
     nickname: '',
     age: '',
-    skill: ''
+    skill: '',
+    avatar:'',
   }
 
   _onSubmit = () => {
     const isValid = this.validate({
+      avatar: { required: true },
       name: { required: true },
       nickname: { required: true },
       age: { required: true, numbers: true },
@@ -21,6 +23,11 @@ export default class ResumeForm extends ValidationComponent {
     });
     if (isValid) {
       const formData = new FormData();
+      const uri = this.state.avatar
+      formData.append('avatar', {uri:Platform.OS ==='android' ? uri: uri.replace('file://',''),
+        type:'image',
+        name:'avatar',
+    })
       formData.append('name', this.state.name)
       formData.append('nickname', this.state.nickname)
       formData.append('age', this.state.age)
@@ -48,11 +55,11 @@ export default class ResumeForm extends ValidationComponent {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text style={styles.errorMessage}>
           {this.getErrorMessages()}
         </Text>
-        <Camera/>
+        <Camera onTakePicture ={(pictureUri ) =>{this.setState({avatar:pictureUri})}}/>
         <View>
           <Text>Full Name</Text>
           <TextInput
@@ -92,7 +99,7 @@ export default class ResumeForm extends ValidationComponent {
             title="Create Resume"
           />
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }
