@@ -9,14 +9,33 @@ import MovieDetail from './screens/MovieDetail';
 const Stack = createStackNavigator();
 const Navigation = () => (
   <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator
+    screenOptions ={
+      {
+        headerStyle :{
+          backgroundColor: 'black'
+        },
+        headerTintColor: 'pink'
+      }
+        } >
       <Stack.Screen
         name="MovieList"
         component={MovieList}
+        options = {
+          {
+            title: 'Movie show time example'
+        }
+      }
       />
       <Stack.Screen
         name="MovieDetail"
         component={MovieDetail}
+        options = {
+          {
+            title: null,
+            headerTruncatedBackTitle:null
+        }
+      }
       />
     </Stack.Navigator>
   </NavigationContainer>
